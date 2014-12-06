@@ -5,3 +5,11 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+.page-header{
+  padding: 40px 15px;
+  text-align: center;
+}
+.page-header-forms{
+  padding: 40px 15px;
+  text-align: left;
+}

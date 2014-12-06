@@ -16,3 +16,6 @@ class Student(models.Model):
     package = models.CharField(max_length=1, choices=PACKAGE_FIELDS,
                                default='s')
     course = models.ManyToManyField('courses.Course')
+
+    def __unicode__(self):
+        return "%s %s" % (self.name, self.surname)

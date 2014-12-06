@@ -44,18 +44,17 @@
 
 
     <div class="container">
-        <h1>Students list</h1>
-        <ul class="list-group">
-          
-          {% for student in students %}
+        <h1>Coaches list</h1>
+        <ol class="list-group">
+          {% for coach in coaches %}
           <li class="list-group-item">
-            <a href="/students/{{ student.id }}/">
-              {{ student.surname }} {{ student.name }}
+            {{ forloop.counter }}
+            <a href="/coaches/{{ coach.id }}/">
+              {{ coach.surname }} {{ coach.name }}
             </a>
           </li>
           {% endfor %}
-
-        </ul>
+        </ol>
 
     </div><!-- /.container -->
 

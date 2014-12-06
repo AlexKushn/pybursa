@@ -16,3 +16,6 @@ class Course(models.Model):
                                   related_name="course_assistant")
     date_of_start = models.DateField()
     date_of_end = models.DateField()
+
+    def __unicode__(self):
+        return "%s" % (self.name, )

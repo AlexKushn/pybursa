@@ -14,3 +14,6 @@ class Coach(models.Model):
     phone = models.CharField(max_length=15)
     teacher = models.CharField(max_length=2, choices=TEACHERS)
     user = models.ForeignKey(User)
+
+    def __unicode__(self):
+        return "%s %s" % (self.name, self.surname)
