@@ -53,7 +53,16 @@
           <li class="list-group-item">Телефон: {{ student.phone }}</li>
           <li class="list-group-item">Курс: {% for course in student.course.all %}
                                             {{ course }}{% endfor %}</li>
-          <li class="list-group-item">Пакет: {{ student.package }}</li>
+          <li class="list-group-item">Пакет: {{ student.get_package_display }}</li>
+          {% if student.dossier %}
+          <li class="list-group-item">Адрес: {{ student.dossier.address }}</li>
+              {% if student.dossier.unloved_courses %}
+          <li class="list-group-item">Нелюбимые курсы:
+                {%  for course in student.dossier.unloved_courses.all %}
+                {{ course }}{% endfor %}</li>
+              {% endif %}
+          {% endif %}
+          <li class="list-group-item">Любимый цвет:{{ student.dossier.favorite_colour }}
           {# <li class="list-group-item">Рейтинг: 1</li> #}
 
         </ul>

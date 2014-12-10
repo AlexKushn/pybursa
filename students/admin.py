@@ -1,4 +1,6 @@
 from django.contrib import admin
-from students.models import Student
+from students.models import Student, Address
 
 admin.site.register(Student)
+admin.site.register(Address)
+

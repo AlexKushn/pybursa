@@ -52,10 +52,14 @@
           <li class="list-group-item">Описание: {{ course.description }}</li>
           <li class="list-group-item">Технология: {{ course.get_technology_display }}</li>
           <li class="list-group-item">Преподаватель: {{ course.lecturer }}</li>
+            {% if course.assistant %}
           <li class="list-group-item">Ассистент: {{ course.assistant }}</li>
+            {% endif %}
           <li class="list-group-item">Дата начала: {{ course.date_of_start }}</li>
           <li class="list-group-item">Дата окончания: {{ course.date_of_end }}</li>
-
+            {% if course.venue %}
+          <li class="list-group-item">Адрес: {{ course.venue }}</li>
+            {% endif %}
         </ul>
 
     </div><!-- /.container -->

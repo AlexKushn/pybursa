@@ -47,11 +47,18 @@
 
     <div class="container">
 
-        <h1>Student: {{ coach.surname }} {{ coach.name }}</h1>
+        <h1>Coach: {{ coach.surname }} {{ coach.name }}</h1>
         <ul class="list-group">
           <li class="list-group-item">Email: {{ coach.email }}</li>
           <li class="list-group-item">Телефон: {{ coach.phone }}</li>
           <li class="list-group-item">Должность: {{ coach.get_teacher_display }}</li>
+            {% if coach.dossier %}
+          <li class="list-group-item">Адрес: {{ coach.dossier.address }}</li>
+          <li class="list-group-item">Нелюбимые курсы:
+              {%  for course in coach.dossier.unloved_courses.all %}
+              {{ course }}{% endfor %}</li>
+          {% endif %}
+          <li class="list-group-item">Любимый цвет:{{ coach.dossier.favorite_colour }}
           {# <li class="list-group-item">Рейтинг: 1</li> #}
 
         </ul>
