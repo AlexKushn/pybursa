@@ -9,6 +9,7 @@ class Course(models.Model):
     )
 
     name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, blank=True, default="")
     description = models.CharField(max_length=255)
     lecturer = models.ForeignKey('coaches.Coach')
     assistant = models.ForeignKey('coaches.Coach',  blank=True, null=True,
