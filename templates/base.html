@@ -1,0 +1,38 @@
+{% load static %}<!DOCTYPE html>
+<!-- saved from url=(0050)http://getbootstrap.com/examples/starter-template/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+
+    <title>{% block title  %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "dist/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "examples/starter-template.css" %}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+
+{% block header %}
+{% endblock %}
+
+
+{% block content %}
+{% endblock %}
+
+
+    {% block footer %}
+    {% include 'footer.html' %}
+    {% endblock %}
+
+
+</body></html>
