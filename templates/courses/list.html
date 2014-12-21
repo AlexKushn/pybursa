@@ -22,6 +22,7 @@
                             <th>Название</th>
                             <th>Дата начала</th>
                             <th>Дата окончания</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -31,6 +32,10 @@
                              {{ course.name }}</a></td>
                          <td>{{ course.date_of_start }}</td>
                          <td>{{ course.date_of_end }}</td>
+                         <td><span class="badge"><a href="{% url 'course-edit' course.id %}">Edit</a></span>
+                             <span class="badge"><a href="{% url 'course-add' %}">Add</a></span>
+                             <span class="badge"><a href="{% url 'course-delete' course.id %}">Delete</a></span>
+                         </td>
                          </tr>
                        {% endfor %}
                         </tbody>

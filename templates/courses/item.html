@@ -21,6 +21,9 @@
             {% if course.venue %}
           <li class="list-group-item">Адрес: {{ course.venue }}</li>
             {% endif %}
+          <li class="list-group-item"><a href="{% url 'course-edit' course.id %}">Edit</a>
+          <a href="{% url 'course-add' %}">Add</a>
+          <a href="{% url 'course-delete' course.id %}">Delete</a></li>
         </ul>
 
     </div><!-- /.container -->

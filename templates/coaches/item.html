@@ -21,6 +21,9 @@
               {{ course }}{% endfor %}</li>
           {% endif %}
           <li class="list-group-item">Любимый цвет:{{ coach.dossier.favorite_colour }}
+          <li class="list-group-item"><a href="{% url 'coach-edit' coach.id %}">Edit</a>
+          <a href="{% url 'coach-add' %}">Add</a>
+          <a href="{% url 'coach-delete' coach.id %}">Delete</a></li>
           {# <li class="list-group-item">Рейтинг: 1</li> #}
 
         </ul>

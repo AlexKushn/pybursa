@@ -16,8 +16,11 @@
           {{ forloop.counter }}
             <a href="{% url 'student-item' student.id %}">
               {{ student.surname }} {{ student.name }}
-            </a>
+            </a><span class="badge"><a href="{% url 'student-delete' student.id %}">Delete</a></span>
+            <span class="badge"><a href="{% url 'student-add' %}">Add</a></span>
+            <span class="badge"><a href="{% url 'student-edit' student.id %}">Edit</a></span>
           </li>
+
           {% endfor %}
 
         </ul>

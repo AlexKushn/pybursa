@@ -247,3 +247,16 @@ h1{
 	70% {background-color: #f9ac32;}
 	10% {background-color: #f99032;}
 }
+.errorlist {
+    color: red;
+}
+
+.badge{
+    background-color: #474949 ;
+}
+span.required {
+    color: crimson ;
+}
+.required input {
+    border: 1px solid crimson;
+}

@@ -1,0 +1,32 @@
+{%  extends "students/base.html" %}
+{% load static %}
+
+
+{% block title %}{{ title|capfirst }} {% endblock %}
+
+
+{% block content %}
+
+    <div class="container">
+        <h2>{{ title }}</h2>
+        <form  method="post">
+            {% csrf_token %}
+             {% for field in form %}
+             <div class="fieldWrapper">
+              {% if field.field.required %}
+                   {{ field.errors }}
+                   {{ field.label_tag }}
+                    <span class="required">*
+                      </span>{{ field }}
+             {% else %}
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+            {% endif %}
+             </div>
+             {% endfor %}
+        <p><span class="required">*
+                      </span> - required fields</p>
+        <input type="submit" />
+        </form>
+    </div><!-- /.container -->
+{% endblock %}

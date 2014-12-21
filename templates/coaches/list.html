@@ -15,7 +15,9 @@
             {{ forloop.counter }}
             <a href="{% url 'coach-item' coach.id %}">
               {{ coach.surname }} {{ coach.name }}
-            </a>
+            </a><span class="badge"><a href="{% url 'coach-delete' coach.id %}">Delete</a></span>
+            <span class="badge"><a href="{% url 'coach-add' %}">Add</a></span>
+            <span class="badge"><a href="{% url 'coach-edit' coach.id %}">Edit</a></span>
           </li>
           {% endfor %}
         </ol>
