@@ -1,5 +1,9 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+from django.views.generic.edit import (CreateView, UpdateView, DeleteView)
 from django import forms
+
 from courses.models import Course
 
 
@@ -8,55 +12,59 @@ class CourseModelForm(forms.ModelForm):
 
     class Meta:
         model = Course
-        fields = ['name', 'slug', 'description', 'lecturer', 'assistant', 'date_of_start',
-                  'date_of_end', 'technology', "venue"]
+        fields = ['name', 'slug', 'description', 'lecturer', 'assistant',
+                  'date_of_start', 'date_of_end', 'technology', "venue"]
         widgets = {
             'technology': forms.RadioSelect
         }
 
 
-def courses_list(request):
-    courses = Course.objects.all()
-    page_title = 'courses list'
-    return render(request, 'courses/list.html', {'courses': courses,
-                                                 'title': page_title})
+class CourseView(DetailView):
+    template_name = 'courses/item.html'
+    model = Course
 
 
-def courses_item(request, course_id):
-    course = get_object_or_404(Course, id=course_id)
-    page_title = 'course item'
-    return render(request, 'courses/item.html', {'course': course,
-                                                 'title': page_title})
+class CoursesList(ListView):
+    template_name = 'courses/list.html'
+    model = Course
+    context_object_name = 'courses'
+
+    def get_context_data(self, **kwargs):
+        context = super(CoursesList, self).get_context_data(**kwargs)
+        context['title'] = 'Courses list'
+        return context
 
 
-def course_edit(request, course_id):
-    title = "Course edit item"
-    course = get_object_or_404(Course, id=course_id)
-    if request.method == 'POST':
-        form = CourseModelForm(request.POST, instance=course)
-        if form.is_valid():
-            course = form.save()
-            return redirect('course-edit', course.id)
-    else:
-        form = CourseModelForm(instance=course)
-    return render(request, 'courses/edit.html',
-                  {'form': form, 'title': title})
+class CourseAdd(CreateView):
+    template_name = 'courses/edit.html'
+    model = Course
+    form_class = CourseModelForm
+    success_url = reverse_lazy('courses-list')
+
+    def get_context_data(self, **kwargs):
+        context = super(CourseAdd, self).get_context_data(**kwargs)
+        context['title'] = 'Course add item'
+        return context
 
 
-def course_add(request):
-    title = "Course add item"
-    if request.method == 'POST':
-        form = CourseModelForm(request.POST)
-        if form.is_valid():
-            course = form.save()
-            return redirect('course-edit', course.id)
-    else:
-        form = CourseModelForm()
-    return render(request, 'courses/edit.html',
-                  {'form': form, 'title': title})
+class CourseEdit(UpdateView):
+    template_name = 'courses/edit.html'
+    model = Course
+    form_class = CourseModelForm
+    success_url = reverse_lazy('courses-list')
+
+    def get_context_data(self, **kwargs):
+        context = super(CourseEdit, self).get_context_data(**kwargs)
+        context['title'] = 'Course update item'
+        return context
 
 
-def course_delete(request, course_id):
-    course = get_object_or_404(Course, id=course_id)
-    course.delete()
-    return redirect('courses-list')
+class CourseDelete(DeleteView):
+    template_name = 'courses/delete.html'
+    model = Course
+    success_url = reverse_lazy('courses-list')
+
+    def get_context_data(self, **kwargs):
+        context = super(CourseDelete, self).get_context_data(**kwargs)
+        context['title'] = 'Course delete item'
+        return context

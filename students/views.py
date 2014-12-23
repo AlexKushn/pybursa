@@ -34,7 +34,7 @@ class StudentModelForm(forms.ModelForm):
 
 def students_list(request):
     students = Student.objects.all()
-    page_title = 'students list'
+    page_title = 'Students list'
     return render(request, 'students/list.html', {'students': students,
                                                   'title': page_title})
 

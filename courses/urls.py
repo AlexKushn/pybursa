@@ -1,15 +1,17 @@
-from django.conf.urls import patterns, include, url
-from courses.views import courses_list, courses_item, course_edit, course_add, course_delete
+from django.conf.urls import patterns, url
+from courses.views import CoursesList, CourseView, CourseEdit,\
+    CourseAdd, CourseDelete
+
 
 urlpatterns = patterns('',
 
-                       url(r'^$', courses_list, name="courses-list"),
-                       url(r'^add/$', course_add, name="course-add"),
-                       url(r'^edit/(?P<course_id>\d+)/$', course_edit,
+                       url(r'^$', CoursesList.as_view(), name="courses-list"),
+                       url(r'^add/$', CourseAdd.as_view(), name="course-add"),
+                       url(r'^edit/(?P<pk>\d+)/$', CourseEdit.as_view(),
                            name="course-edit"),
-                       url(r'^delete/(?P<course_id>\d+)/$', course_delete,
+                       url(r'^delete/(?P<pk>\d+)/$', CourseDelete.as_view(),
                            name="course-delete"),
-                       url(r'^(?P<course_id>\d+)/$', courses_item,
+                       url(r'^(?P<pk>\d+)/$', CourseView.as_view(),
                            name="course-item"),
                        )
 

@@ -1,5 +1,9 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+from django.views.generic.edit import (CreateView, UpdateView, DeleteView)
 from django import forms
+
 from coaches.models import Coach
 
 
@@ -8,52 +12,56 @@ class CoachModelForm(forms.ModelForm):
 
     class Meta:
         model = Coach
-        fields = ['name', 'surname', 'date_of_birth', 'email', 'phone', 'teacher',
-                  'user', 'dossier']
+        fields = ['name', 'surname', 'date_of_birth', 'email', 'phone',
+                  'teacher', 'user', 'dossier']
 
 
-def coaches_list(request):
-    coaches = Coach.objects.all()
-    page_title = 'coaches list'
-    return render(request, 'coaches/list.html', {'coaches': coaches,
-                                                 'title': page_title})
+class CoachView(DetailView):
+    template_name = 'coaches/item.html'
+    model = Coach
 
 
-def coaches_item(request, coach_id):
-    coach = get_object_or_404(Coach, id=coach_id)
-    page_title = 'couch item'
-    return render(request, 'coaches/item.html', {'coach': coach,
-                                                 'title': page_title})
+class CoachesList(ListView):
+    template_name = 'coaches/list.html'
+    model = Coach
+    context_object_name = 'coaches'
+
+    def get_context_data(self, **kwargs):
+        context = super(CoachesList, self).get_context_data(**kwargs)
+        context['title'] = 'Coaches list'
+        return context
 
 
-def coach_edit(request, coach_id):
-    title = "Coach edit item"
-    coach = get_object_or_404(Coach, id=coach_id)
-    if request.method == 'POST':
-        form = CoachModelForm(request.POST, instance=coach)
-        if form.is_valid():
-            coach = form.save()
-            return redirect('coach-edit', coach.id)
-    else:
-        form = CoachModelForm(instance=coach)
-    return render(request, 'coaches/edit.html',
-                  {'form': form, 'title': title})
+class CoachAdd(CreateView):
+    template_name = 'coaches/edit.html'
+    model = Coach
+    form_class = CoachModelForm
+    success_url = reverse_lazy('coaches-list')
+
+    def get_context_data(self, **kwargs):
+        context = super(CoachAdd, self).get_context_data(**kwargs)
+        context['title'] = 'Coach add item'
+        return context
 
 
-def coach_add(request):
-    title = "Coach add item"
-    if request.method == 'POST':
-        form = CoachModelForm(request.POST)
-        if form.is_valid():
-            coach = form.save()
-            return redirect('coach-edit', coach.id)
-    else:
-        form = CoachModelForm()
-    return render(request, 'coaches/edit.html',
-                  {'form': form, 'title': title})
+class CoachEdit(UpdateView):
+    template_name = 'coaches/edit.html'
+    model = Coach
+    form_class = CoachModelForm
+    success_url = reverse_lazy('coaches-list')
+
+    def get_context_data(self, **kwargs):
+        context = super(CoachEdit, self).get_context_data(**kwargs)
+        context['title'] = 'Coach update item'
+        return context
 
 
-def coach_delete(request, coach_id):
-    coach = get_object_or_404(Coach, id=coach_id)
-    coach.delete()
-    return redirect('coaches-list')
+class CoachDelete(DeleteView):
+    template_name = 'coaches/delete.html'
+    model = Coach
+    success_url = reverse_lazy('coaches-list')
+
+    def get_context_data(self, **kwargs):
+        context = super(CoachDelete, self).get_context_data(**kwargs)
+        context['title'] = 'Coach delete item'
+        return context

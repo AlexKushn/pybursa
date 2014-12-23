@@ -10,7 +10,7 @@
     <div class="container">
         <h2>Coaches list</h2>
         <ol class="list-group">
-          {% for coach in coaches %}
+          {% for coach in object_list %}
           <li class="list-group-item">
             {{ forloop.counter }}
             <a href="{% url 'coach-item' coach.id %}">
