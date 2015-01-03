@@ -1,4 +1,7 @@
+# coding=utf-8
+
 from django.shortcuts import render, get_object_or_404, redirect
+from django.utils.translation import ugettext_lazy as _
 from django import forms
 from students.models import Student, Dossier, Course
 
@@ -9,16 +12,17 @@ class StudentForm(forms.Form):
               ('G', 'Gold'),
               ('V', 'Vip'),
     )
-    student_name = forms.CharField(max_length=100)
-    student_surname = forms.CharField(max_length=255)
-    student_date_of_birth = forms.DateField()
-    student_email = forms.EmailField()
-    student_phone = forms.CharField(max_length=15)
-    student_course = forms.ModelMultipleChoiceField(Course.objects.all())
+    student_name = forms.CharField(max_length=100, label=_('Name'))
+    student_surname = forms.CharField(max_length=255, label=_('Surname'))
+    student_date_of_birth = forms.DateField(label=_('Date of birth'))
+    student_email = forms.EmailField(label=_('Email'))
+    student_phone = forms.CharField(max_length=15, label=_('Phone'))
+    student_course = forms.ModelMultipleChoiceField(Course.objects.all(),
+                                                    label=_('Course'))
     student_package = forms.ChoiceField(widget=forms.RadioSelect,
-                                        choices=CHOICES)
+                                        choices=CHOICES, label=_('Package'))
     student_dossier = forms.ModelChoiceField(Dossier.objects.all(),
-                                             required=False)
+                                             required=False, label=_('Dossier'))
 
 
 class StudentModelForm(forms.ModelForm):
@@ -34,20 +38,20 @@ class StudentModelForm(forms.ModelForm):
 
 def students_list(request):
     students = Student.objects.all()
-    page_title = 'Students list'
+    page_title = _('Students list')
     return render(request, 'students/list.html', {'students': students,
                                                   'title': page_title})
 
 
 def students_item(request, student_id):
     student = get_object_or_404(Student, id=student_id)
-    page_title = 'student item'
+    page_title = _('Student item')
     return render(request, 'students/item.html', {'student': student,
                                                   'title': page_title})
 
 
 def student_edit(request, student_id):
-    title = "Student edit item"
+    title = _("Student edit item")
     student = get_object_or_404(Student, id=student_id)
     if request.method == 'POST':
         form = StudentForm(request.POST)
@@ -77,7 +81,7 @@ def student_edit(request, student_id):
 
 
 def student_add(request):
-    title = "Student add item"
+    title = _("Student add item")
     if request.method == 'POST':
         form = StudentModelForm(request.POST)
         if form.is_valid():

@@ -1,6 +1,6 @@
 {%  extends "students/base.html" %}
 {% load static %}
-
+{% load i18n %}
 
 {% block title %}{{ title|capfirst }} {% endblock %}
 
@@ -8,7 +8,7 @@
 {% block content %}
 
     <div class="container">
-        <h2>Students list</h2>
+        <h2>{% trans "Students list" %}</h2>
         <ul class="list-group">
 
           {% for student in students %}
@@ -16,9 +16,9 @@
           {{ forloop.counter }}
             <a href="{% url 'student-item' student.id %}">
               {{ student.surname }} {{ student.name }}
-            </a><span class="badge"><a href="{% url 'student-delete' student.id %}">Delete</a></span>
-            <span class="badge"><a href="{% url 'student-add' %}">Add</a></span>
-            <span class="badge"><a href="{% url 'student-edit' student.id %}">Edit</a></span>
+            </a><span class="badge"><a href="{% url 'student-delete' student.id %}">{% trans "Delete" %}</a></span>
+            <span class="badge"><a href="{% url 'student-add' %}">{% trans "Add" %}</a></span>
+            <span class="badge"><a href="{% url 'student-edit' student.id %}">{% trans "Edit" %}</a></span>
           </li>
 
           {% endfor %}

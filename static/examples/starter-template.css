@@ -260,3 +260,7 @@ span.required {
 .required input {
     border: 1px solid crimson;
 }
+.align-right {
+    float: right;
+    margin: -36px 15px 0px 0;
+}

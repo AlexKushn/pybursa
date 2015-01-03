@@ -1,0 +1,335 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-01-03 03:02+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: coaches/models.py:15 courses/models.py:14 students/models.py:15
+#: students/views.py:15
+msgid "Name"
+msgstr "Имя"
+
+#: coaches/models.py:16 students/models.py:16 students/views.py:16
+msgid "Surname"
+msgstr "Фамилия"
+
+#: coaches/models.py:17 students/models.py:17 students/views.py:17
+msgid "Date of birth"
+msgstr "Дата рождения"
+
+#: coaches/models.py:18 pybursa/views.py:29 students/models.py:18
+#: students/views.py:18
+msgid "Email"
+msgstr "Электронная почта"
+
+#: coaches/models.py:19 students/models.py:19 students/views.py:19
+msgid "Phone"
+msgstr "Телефон"
+
+#: coaches/models.py:21
+msgid "Teacher"
+msgstr "Должность"
+
+#: coaches/models.py:22
+msgid "User"
+msgstr "Пользователь"
+
+#: coaches/models.py:24 students/models.py:24 students/views.py:25
+msgid "Dossier"
+msgstr "Досье"
+
+#: coaches/views.py:34 templates/coaches/list.html:11 templates/header.html:20
+msgid "Coaches list"
+msgstr "Список преподавателей"
+
+#: coaches/views.py:46
+msgid "Coach add item"
+msgstr "Добавить преподавателя"
+
+#: coaches/views.py:58
+msgid "Coach update item"
+msgstr "Обновить профиль преподавателя"
+
+#: coaches/views.py:69
+msgid "Coach delete item"
+msgstr "Удалить преподавателя"
+
+#: courses/models.py:16
+msgid "Slug"
+msgstr "Строка"
+
+#: courses/models.py:17
+msgid "Description"
+msgstr "Описание"
+
+#: courses/models.py:18
+msgid "Lecturer"
+msgstr "Преподаватель"
+
+#: courses/models.py:21
+msgid "Assistant"
+msgstr "Ассистент"
+
+#: courses/models.py:22 templates/courses/list.html:23
+msgid "Date of start"
+msgstr "Дата начала"
+
+#: courses/models.py:23 templates/courses/list.html:24
+msgid "Date of end"
+msgstr "Дата окончания"
+
+#: courses/models.py:25
+msgid "Technology"
+msgstr "Технология"
+
+#: courses/models.py:27
+msgid "Venue"
+msgstr "Место"
+
+#: courses/views.py:37 templates/courses/list.html:15 templates/header.html:19
+msgid "Courses list"
+msgstr "Список курсов"
+
+#: courses/views.py:49
+msgid "Course add item"
+msgstr "Добавить курс"
+
+#: courses/views.py:61
+msgid "Course update item"
+msgstr "Обновить курс"
+
+#: courses/views.py:72
+msgid "Course delete item"
+msgstr "Удалить курс"
+
+#: pybursa/settings.py:91
+msgid "English"
+msgstr ""
+
+#: pybursa/settings.py:92
+msgid "Russian"
+msgstr ""
+
+#: pybursa/views.py:21
+msgid "Theme"
+msgstr "Тема"
+
+#: pybursa/views.py:24
+msgid "Coach"
+msgstr "Преподаватель"
+
+#: pybursa/views.py:27
+msgid "Student"
+msgstr "Студент"
+
+#: pybursa/views.py:28
+msgid "Body"
+msgstr "Сообщение"
+
+#: pybursa/views.py:47
+msgid "Message sent successfully!"
+msgstr "Сообщение успешно отослано"
+
+#: pybursa/views.py:52
+msgid "Contact send email"
+msgstr "Отправка сообщения"
+
+#: students/models.py:20 students/views.py:21
+msgid "Course"
+msgstr "Курс"
+
+#: students/models.py:22 students/views.py:23
+msgid "Package"
+msgstr "Пакет"
+
+#: students/models.py:31
+msgid "Zip"
+msgstr "Индекс"
+
+#: students/models.py:32
+msgid "Country"
+msgstr "Страна"
+
+#: students/models.py:33
+msgid "Province"
+msgstr "Область"
+
+#: students/models.py:34
+msgid "Region"
+msgstr "Район"
+
+#: students/models.py:35
+msgid "City"
+msgstr "Город"
+
+#: students/models.py:36
+msgid "Street"
+msgstr "Улица"
+
+#: students/models.py:37
+msgid "House"
+msgstr "Дом"
+
+#: students/models.py:55
+msgid "Address"
+msgstr "Адрес"
+
+#: students/models.py:57
+msgid "Unloved courses"
+msgstr "Нелюбимые курсы"
+
+#: students/models.py:60
+msgid "Favorite colour"
+msgstr "Любимый цвет"
+
+#: students/views.py:41 templates/header.html:18
+#: templates/students/list.html:11
+msgid "Students list"
+msgstr "Список студентов"
+
+#: students/views.py:48
+msgid "Student item"
+msgstr "Профиль студента"
+
+#: students/views.py:54
+msgid "Student edit item"
+msgstr "Редактирование профиля студента"
+
+#: students/views.py:84
+msgid "Student add item"
+msgstr "Добавить студента"
+
+#: templates/admin/base_site.html:3
+msgid "Django site admin"
+msgstr ""
+
+#: templates/coaches/delete.html:12 templates/courses/delete.html:12
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены - что хотите удалить"
+
+#: templates/coaches/delete.html:13 templates/courses/delete.html:13
+msgid "Confirm"
+msgstr "Да"
+
+#: templates/coaches/edit.html:15 templates/contact/form.html:17
+#: templates/courses/edit.html:14 templates/students/edit.html:29
+msgid "Send"
+msgstr "Отправить"
+
+#: templates/coaches/item.html:12
+msgid "Coach:"
+msgstr "Преподаватель:"
+
+#: templates/coaches/item.html:14 templates/students/item.html:14
+msgid "Email:"
+msgstr "Электроннная почта:"
+
+#: templates/coaches/item.html:15 templates/students/item.html:15
+msgid "Phone:"
+msgstr "Телефон:"
+
+#: templates/coaches/item.html:16
+msgid "Teacher:"
+msgstr "Должность:"
+
+#: templates/coaches/item.html:18 templates/courses/item.html:22
+#: templates/students/item.html:20
+msgid "Address:"
+msgstr "Адрес:"
+
+#: templates/coaches/item.html:19 templates/students/item.html:22
+msgid "Unloved courses:"
+msgstr "Нелюбимые курсы:"
+
+#: templates/coaches/item.html:23 templates/students/item.html:27
+msgid "Favorite colour:"
+msgstr "Любимый цвет:"
+
+#: templates/coaches/item.html:24 templates/coaches/list.html:20
+#: templates/courses/item.html:24 templates/courses/list.html:35
+#: templates/students/item.html:28 templates/students/list.html:21
+msgid "Edit"
+msgstr "Редактировать"
+
+#: templates/coaches/item.html:25 templates/coaches/list.html:19
+#: templates/courses/item.html:25 templates/courses/list.html:36
+#: templates/students/item.html:29 templates/students/list.html:20
+msgid "Add"
+msgstr "Добавить"
+
+#: templates/coaches/item.html:26 templates/coaches/list.html:18
+#: templates/courses/item.html:26 templates/courses/list.html:37
+#: templates/students/item.html:30 templates/students/list.html:19
+msgid "Delete"
+msgstr "Удалить"
+
+#: templates/courses/item.html:11 templates/students/item.html:16
+msgid "Course:"
+msgstr "Курс:"
+
+#: templates/courses/item.html:13
+msgid "Description:"
+msgstr "Описание:"
+
+#: templates/courses/item.html:14
+msgid "Technology:"
+msgstr "Технология:"
+
+#: templates/courses/item.html:15
+msgid "Lecturer:"
+msgstr "Преподаватель:"
+
+#: templates/courses/item.html:17
+msgid "Assistant:"
+msgstr "Ассистент:"
+
+#: templates/courses/item.html:19
+msgid "Date of start:"
+msgstr "Дата начала:"
+
+#: templates/courses/item.html:20
+msgid "Date of end:"
+msgstr "Дата окончания:"
+
+#: templates/courses/list.html:22
+msgid "Course name"
+msgstr "Название курса"
+
+#: templates/header.html:17
+msgid "Home"
+msgstr "Главная"
+
+#: templates/header.html:21
+msgid "Contact us"
+msgstr "Напишите нам"
+
+#: templates/index.html:47
+msgid "PyBursa wishes you a Merry Christmas and a Happy New Year."
+msgstr "PyBursa поздравляет вас с Новым годом и Рождеством"
+
+#: templates/students/edit.html:28
+msgid "required fields"
+msgstr "необходимые поля"
+
+#: templates/students/item.html:12
+msgid "Student:"
+msgstr "Студент:"
+
+#: templates/students/item.html:18
+msgid "Package:"
+msgstr "Пакет:"

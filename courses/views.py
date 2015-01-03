@@ -1,4 +1,7 @@
+# coding=utf-8
+
 from django.core.urlresolvers import reverse_lazy
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import (CreateView, UpdateView, DeleteView)
@@ -31,7 +34,7 @@ class CoursesList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(CoursesList, self).get_context_data(**kwargs)
-        context['title'] = 'Courses list'
+        context['title'] = _('Courses list')
         return context
 
 
@@ -43,7 +46,7 @@ class CourseAdd(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(CourseAdd, self).get_context_data(**kwargs)
-        context['title'] = 'Course add item'
+        context['title'] = _('Course add item')
         return context
 
 
@@ -55,7 +58,7 @@ class CourseEdit(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(CourseEdit, self).get_context_data(**kwargs)
-        context['title'] = 'Course update item'
+        context['title'] = _('Course update item')
         return context
 
 
@@ -66,5 +69,5 @@ class CourseDelete(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super(CourseDelete, self).get_context_data(**kwargs)
-        context['title'] = 'Course delete item'
+        context['title'] = _('Course delete item')
         return context

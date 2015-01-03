@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+from django.utils.translation import ugettext_lazy as _
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
 # Quick-start development settings - unsuitable for production
@@ -27,7 +28,8 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
 # Application definition
 
 DJANGO_APPS = (
@@ -49,6 +51,7 @@ INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -74,12 +77,24 @@ DATABASES = {
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'), )
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
+
+MEDIA_ROOT = ''
+STATIC_ROOT = ''
 
 TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.request', )
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
+LANGUAGES = (
+    ('en', _('English')),
+    ('ru', _('Russian')),
+)
 
-LANGUAGE_CODE = 'en-us'
+
+LANGUAGE_CODE = 'ru'
+
 
 TIME_ZONE = 'Europe/Kiev'
 

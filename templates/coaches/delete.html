@@ -1,6 +1,6 @@
 {%  extends "courses/base.html" %}
 {% load static %}
-
+{% load i18n %}
 
 {% block title %}{{ title|capfirst }} {% endblock %}
 
@@ -9,8 +9,8 @@
     <div class="container">
         <h2>{{ title }}</h2>
 <form action="" method="post">{% csrf_token %}
-    <p>Are you sure you want to delete "{{ object }}"?</p>
-    <input type="submit" value="Confirm" />
+    <p>{% trans "Are you sure you want to delete" %} "{{ object }}"?</p>
+    <input type="submit" value={% trans "Confirm" %} />
 </form>
 </div>
 {% endblock %}

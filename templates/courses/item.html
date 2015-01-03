@@ -1,6 +1,6 @@
 {%  extends "courses/base.html" %}
 {% load static %}
-
+{% load i18n %}
 
 {% block title %}{{ title|capfirst }} {% endblock %}
 
@@ -8,22 +8,22 @@
 {% block content %}
     <div class="container">
 
-        <h2>Course: {{ course.name }}</h2>
+        <h2>{%  trans "Course:" %} {{ course.name }}</h2>
         <ul class="list-group">
-          <li class="list-group-item">Описание: {{ course.description }}</li>
-          <li class="list-group-item">Технология: {{ course.get_technology_display }}</li>
-          <li class="list-group-item">Преподаватель: {{ course.lecturer }}</li>
+          <li class="list-group-item">{% trans "Description:" %} {{ course.description }}</li>
+          <li class="list-group-item">{% trans "Technology:" %} {{ course.get_technology_display }}</li>
+          <li class="list-group-item">{% trans "Lecturer:" %} {{ course.lecturer }}</li>
             {% if course.assistant %}
-          <li class="list-group-item">Ассистент: {{ course.assistant }}</li>
+          <li class="list-group-item">{%  trans "Assistant:" %} {{ course.assistant }}</li>
             {% endif %}
-          <li class="list-group-item">Дата начала: {{ course.date_of_start }}</li>
-          <li class="list-group-item">Дата окончания: {{ course.date_of_end }}</li>
+          <li class="list-group-item">{% trans "Date of start:" %} {{ course.date_of_start }}</li>
+          <li class="list-group-item">{% trans "Date of end:" %} {{ course.date_of_end }}</li>
             {% if course.venue %}
-          <li class="list-group-item">Адрес: {{ course.venue }}</li>
+          <li class="list-group-item">{% trans "Address:" %} {{ course.venue }}</li>
             {% endif %}
-          <li class="list-group-item"><a href="{% url 'course-edit' course.id %}">Edit</a>
-          <a href="{% url 'course-add' %}">Add</a>
-          <a href="{% url 'course-delete' course.id %}">Delete</a></li>
+          <li class="list-group-item"><a href="{% url 'course-edit' course.id %}">{% trans "Edit" %}</a>
+          <a href="{% url 'course-add' %}">{% trans "Add" %}</a>
+          <a href="{% url 'course-delete' course.id %}">{% trans "Delete" %}</a></li>
         </ul>
 
     </div><!-- /.container -->

@@ -1,6 +1,6 @@
 {%  extends "coaches/base.html" %}
 {% load static %}
-
+{% load i18n %}
 
 {% block title %}{{ title|capfirst }} {% endblock %}
 
@@ -9,21 +9,21 @@
 
     <div class="container">
 
-        <h2>Coach: {{ coach.surname }} {{ coach.name }}</h2>
+        <h2>{% trans "Coach:" %} {{ coach.surname }} {{ coach.name }}</h2>
         <ul class="list-group">
-          <li class="list-group-item">Email: {{ coach.email }}</li>
-          <li class="list-group-item">Телефон: {{ coach.phone }}</li>
-          <li class="list-group-item">Должность: {{ coach.get_teacher_display }}</li>
+          <li class="list-group-item">{% trans "Email:" %} {{ coach.email }}</li>
+          <li class="list-group-item">{% trans "Phone:" %} {{ coach.phone }}</li>
+          <li class="list-group-item">{% trans "Teacher:" %} {{ coach.get_teacher_display }}</li>
             {% if coach.dossier %}
-          <li class="list-group-item">Адрес: {{ coach.dossier.address }}</li>
-          <li class="list-group-item">Нелюбимые курсы:
+          <li class="list-group-item">{% trans "Address:" %} {{ coach.dossier.address }}</li>
+          <li class="list-group-item">{% trans "Unloved courses:" %}
               {%  for course in coach.dossier.unloved_courses.all %}
               {{ course }}{% endfor %}</li>
           {% endif %}
-          <li class="list-group-item">Любимый цвет:{{ coach.dossier.favorite_colour }}
-          <li class="list-group-item"><a href="{% url 'coach-edit' coach.id %}">Edit</a>
-          <a href="{% url 'coach-add' %}">Add</a>
-          <a href="{% url 'coach-delete' coach.id %}">Delete</a></li>
+          <li class="list-group-item">{% trans "Favorite colour:" %} {{ coach.dossier.favorite_colour }}
+          <li class="list-group-item"><a href="{% url 'coach-edit' coach.id %}">{% trans "Edit" %}</a>
+          <a href="{% url 'coach-add' %}">{% trans "Add" %}</a>
+          <a href="{% url 'coach-delete' coach.id %}">{% trans "Delete" %}</a></li>
           {# <li class="list-group-item">Рейтинг: 1</li> #}
 
         </ul>

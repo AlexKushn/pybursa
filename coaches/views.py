@@ -1,4 +1,7 @@
+# coding=utf-8
+
 from django.core.urlresolvers import reverse_lazy
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import (CreateView, UpdateView, DeleteView)
@@ -28,7 +31,7 @@ class CoachesList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(CoachesList, self).get_context_data(**kwargs)
-        context['title'] = 'Coaches list'
+        context['title'] = _('Coaches list')
         return context
 
 
@@ -40,7 +43,7 @@ class CoachAdd(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(CoachAdd, self).get_context_data(**kwargs)
-        context['title'] = 'Coach add item'
+        context['title'] = _('Coach add item')
         return context
 
 
@@ -52,7 +55,7 @@ class CoachEdit(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(CoachEdit, self).get_context_data(**kwargs)
-        context['title'] = 'Coach update item'
+        context['title'] = _('Coach update item')
         return context
 
 
@@ -63,5 +66,5 @@ class CoachDelete(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super(CoachDelete, self).get_context_data(**kwargs)
-        context['title'] = 'Coach delete item'
+        context['title'] = _('Coach delete item')
         return context

@@ -1,6 +1,6 @@
 {%  extends "students/base.html" %}
 {% load static %}
-
+{% load i18n %}
 
 {% block title %}{{ title|capfirst }} {% endblock %}
 
@@ -25,8 +25,8 @@
              </div>
              {% endfor %}
         <p><span class="required">*
-                      </span> - required fields</p>
-        <input type="submit" />
+                      </span> - {% trans "required fields" %}</p>
+        <input type="submit" value={% trans "Send" %} />
         </form>
     </div><!-- /.container -->
 {% endblock %}

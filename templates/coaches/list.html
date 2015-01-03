@@ -1,6 +1,6 @@
 {%  extends "coaches/base.html" %}
 {% load static %}
-
+{% load i18n %}
 
 {% block title %}{{ title|capfirst }} {% endblock %}
 
@@ -8,16 +8,16 @@
 {% block content %}
 
     <div class="container">
-        <h2>Coaches list</h2>
+        <h2>{% trans "Coaches list" %}</h2>
         <ol class="list-group">
           {% for coach in object_list %}
           <li class="list-group-item">
             {{ forloop.counter }}
             <a href="{% url 'coach-item' coach.id %}">
               {{ coach.surname }} {{ coach.name }}
-            </a><span class="badge"><a href="{% url 'coach-delete' coach.id %}">Delete</a></span>
-            <span class="badge"><a href="{% url 'coach-add' %}">Add</a></span>
-            <span class="badge"><a href="{% url 'coach-edit' coach.id %}">Edit</a></span>
+            </a><span class="badge"><a href="{% url 'coach-delete' coach.id %}">{% trans "Delete" %}</a></span>
+            <span class="badge"><a href="{% url 'coach-add' %}">{% trans "Add" %}</a></span>
+            <span class="badge"><a href="{% url 'coach-edit' coach.id %}">{% trans "Edit" %}</a></span>
           </li>
           {% endfor %}
         </ol>

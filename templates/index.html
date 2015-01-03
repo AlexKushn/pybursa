@@ -1,5 +1,5 @@
 {%  extends "base.html" %}
-
+{% load i18n %}
 
 {% block title %}Home{% endblock %}
 
@@ -44,7 +44,7 @@
 		</div>
     <div class="starter-template">
  <h1>PyBursa</h1>
-        <p class="lead">PyBursa wishes you a Merry Christmas and a Happy New Year.</p>
+        <p class="lead">{% trans "PyBursa wishes you a Merry Christmas and a Happy New Year." %}</p>
         </div>
 	<div style=" width:800px;height:9px; background-color:#2c5871; border-radius:5px;">&nbsp;</div>
 

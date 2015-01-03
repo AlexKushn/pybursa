@@ -1,6 +1,6 @@
 {%  extends "students/base.html" %}
 {% load static %}
-
+{% load i18n %}
 
 {% block title %}{{ title|capfirst }} {% endblock %}
 
@@ -9,25 +9,25 @@
 
     <div class="container">
 
-        <h2>Student: {{ student.surname }} {{ student.name }}</h2>
+        <h2>{% trans "Student:" %} {{ student.surname }} {{ student.name }}</h2>
         <ul class="list-group">
-          <li class="list-group-item">Email: {{ student.email }}</li>
-          <li class="list-group-item">Телефон: {{ student.phone }}</li>
-          <li class="list-group-item">Курс: {% for course in student.course.all %}
+          <li class="list-group-item">{% trans "Email:" %} {{ student.email }}</li>
+          <li class="list-group-item">{% trans "Phone:" %} {{ student.phone }}</li>
+          <li class="list-group-item">{% trans "Course:" %} {% for course in student.course.all %}
                                             {{ course }}{% endfor %}</li>
-          <li class="list-group-item">Пакет: {{ student.get_package_display }}</li>
+          <li class="list-group-item">{% trans "Package:" %} {{ student.get_package_display }}</li>
           {% if student.dossier %}
-          <li class="list-group-item">Адрес: {{ student.dossier.address }}</li>
+          <li class="list-group-item">{% trans "Address:" %} {{ student.dossier.address }}</li>
               {% if student.dossier.unloved_courses %}
-          <li class="list-group-item">Нелюбимые курсы:
+          <li class="list-group-item">{% trans "Unloved courses:" %}
                 {%  for course in student.dossier.unloved_courses.all %}
                 {{ course }}{% endfor %}</li>
               {% endif %}
           {% endif %}
-          <li class="list-group-item">Любимый цвет:{{ student.dossier.favorite_colour }}</li>
-          <li class="list-group-item"><a href="{% url 'student-edit' student.id %}">Edit</a>
-          <a href="{% url 'student-add' %}">Add</a>
-          <a href="{% url 'student-delete' student.id %}">Delete</a></li>
+          <li class="list-group-item">{% trans "Favorite colour:" %} {{ student.dossier.favorite_colour }}</li>
+          <li class="list-group-item"><a href="{% url 'student-edit' student.id %}">{% trans "Edit" %}</a>
+          <a href="{% url 'student-add' %}">{% trans "Add" %}</a>
+          <a href="{% url 'student-delete' student.id %}">{% trans "Delete" %}</a></li>
           {# <li class="list-group-item">Рейтинг: 1</li> #}
 
         </ul>
