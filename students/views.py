@@ -2,8 +2,13 @@
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
 from django import forms
 from students.models import Student, Dossier, Course
+
+
+import logging
+logger = logging.getLogger(__name__)
 
 
 class StudentForm(forms.Form):
@@ -65,8 +70,16 @@ def student_edit(request, student_id):
             student.package = form.cleaned_data['student_package']
             student.dossier = form.cleaned_data['student_dossier']\
                 if form.cleaned_data['student_dossier'] else None
-            student.save()
-            return redirect('student-edit', student.id)
+
+            try:
+                student.save()
+                messages.success(request, _(student.name + " details updated!"))
+            except:
+                messages.error(request, _("Update error!"))
+        storage = messages.get_messages(request)
+        for message in storage:
+            logger.debug(message)
+        return redirect('student-edit', student.id)
     else:
         form = StudentForm(initial={'student_name': student.name,
                                     'student_surname': student.surname,
@@ -85,8 +98,15 @@ def student_add(request):
     if request.method == 'POST':
         form = StudentModelForm(request.POST)
         if form.is_valid():
-            student = form.save()
-            return redirect('student-edit', student.id)
+            try:
+                student = form.save()
+                messages.success(request, _(student.name + " add successfully!"))
+            except:
+                messages.error(request, _("Profile add error!"))
+        storage = messages.get_messages(request)
+        for message in storage:
+            logger.debug(message)
+        return redirect('student-edit', student.id)
     else:
         form = StudentModelForm()
     return render(request, 'students/edit.html',
@@ -95,5 +115,12 @@ def student_add(request):
 
 def student_delete(request, student_id):
     student = get_object_or_404(Student, id=student_id)
-    student.delete()
+    try:
+        student.delete()
+        messages.success(request, _(student.name + " delete successfully!"))
+    except:
+        messages.error(request, _("Profile delete error!"))
+    storage = messages.get_messages(request)
+    for message in storage:
+        logger.debug(message)
     return redirect('students-list')

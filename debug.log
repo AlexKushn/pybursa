@@ -1,0 +1,13 @@
+07/Jan/2015 00:24:07 pybursa.views DEBUG Connection error. Try later.
+07/Jan/2015 00:24:28 pybursa.views DEBUG Message sent successfully!
+07/Jan/2015 15:21:18 courses.views DEBUG QWERty added successfully!
+07/Jan/2015 15:23:22 courses.views DEBUG QWERty updated successfully!
+07/Jan/2015 15:23:35 courses.views DEBUG QWERty deleted successfully!
+07/Jan/2015 15:30:54 courses.views DEBUG Test added successfully!
+07/Jan/2015 15:31:00 courses.views DEBUG Test deleted successfully!
+07/Jan/2015 15:39:27 students.views DEBUG Петр add successfully!
+07/Jan/2015 15:39:38 students.views DEBUG Петр details updated!
+07/Jan/2015 15:39:42 students.views DEBUG Петр delete successfully!
+07/Jan/2015 15:44:44 coaches.views DEBUG Геннадий added successfully!
+07/Jan/2015 15:45:10 coaches.views DEBUG Геннадий updated successfully!
+07/Jan/2015 15:45:14 coaches.views DEBUG Геннадий deleted successfully!

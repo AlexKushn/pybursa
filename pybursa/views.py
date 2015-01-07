@@ -13,6 +13,10 @@ from students.models import Student
 from coaches.models import Coach
 
 
+import logging
+logger = logging.getLogger(__name__)
+
+
 class HomeView(TemplateView):
     template_name = "index.html"
 
@@ -43,8 +47,15 @@ class ContactView(FormView):
         mail = render_to_string('contact/sample_form.html', {'coach': coach,
                                                              'student': student,
                                                              'body': body})
-        send_mail(theme, mail, email, [coach.email], fail_silently=False)
-        messages.success(self.request, _('Message sent successfully!'))
+
+        try:
+            send_mail(theme, mail, email, [coach.email], fail_silently=False)
+            messages.success(self.request, _('Message sent successfully!'))
+        except:
+            messages.error(self.request, _("Connection error. Try later."))
+        storage = messages.get_messages(self.request)
+        for message in storage:
+            logger.debug(message)
         return redirect('contact-us')
 
     def get_context_data(self, **kwargs):
